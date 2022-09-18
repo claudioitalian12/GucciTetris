@@ -7,7 +7,7 @@
   - [x] Support Iphone portrait
   - [x] Use MVVM pattern
   - [x] Use Modular architecture 
-  - [x] Write Unit Test
+  - [x] Write Unit Test(Partial)
 
 ### 1. Local Modular Library
    - [x] BaseGucciTetris: Package with the protocol interface.
