@@ -45,37 +45,49 @@ extension Grid {
     }
     /// moveConditions.
     func moveConditions(node: SKNode) -> SKAction {
-        return SKAction.run { [weak self] in
+        SKAction.run { [weak self] in
             guard let self = self else {
                 return
             }
-            self.checkWhiteBloc(node: node)
-            self.checkBlueBloc(node: node)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                self.checkWhiteBloc(node: node)
+                self.checkBlueBloc(node: node)
+            }
         }
     }
     /// checkWhiteBloc.
     func checkWhiteBloc(node: SKNode) {
         let closestChilds = self.children.filter {
             Int(node.position.y) == Int($0.position.y) &&
-            (self.closestChilds(point: node.position, maxDistance: self.gridViewModel.blocSize) ?? []).count >= 2
+            (self.closestChilds(
+                point: node.position,
+                maxDistance: self.gridViewModel.blocSize
+            ) ?? []).count >= 2
         }
         if closestChilds.count > 2 {
-            node.removeAllActions()
-            var whiteNodePosition = node.position.y
-            while whiteNodePosition > -79.0 {
-                whiteNodePosition = whiteNodePosition - self.gridViewModel.blocSize
-                
-                let whiteBloc = GucciBlocFactory().createWhiteBloc(
-                    size: node.frame.size,
-                    name: BlocName.whiteBloc.rawValue
-                )
-                whiteBloc.name = BlocName.whiteBloc.rawValue
-                whiteBloc.position = node.position
-                whiteBloc.position.y = whiteNodePosition
-                
-                if !self.positionIsNotFree(position: whiteBloc.position) {
-                    self.addChild(whiteBloc)
-                }
+            addWhiteBlocs(node: node)
+        }
+    }
+    /// addWhiteBlocs.
+    func addWhiteBlocs(node: SKNode) {
+        node.removeAllActions()
+        var whiteNodePosition = node.position.y
+        while whiteNodePosition > self.gridViewModel.gridMinY() {
+            whiteNodePosition = whiteNodePosition - self.gridViewModel.blocSize
+            
+            let whiteBloc = GucciBlocFactory().createWhiteBloc(
+                size: node.frame.size,
+                name: BlocName.whiteBloc.rawValue
+            )
+            whiteBloc.name = BlocName.whiteBloc.rawValue
+            whiteBloc.position = node.position
+            whiteBloc.position.y = whiteNodePosition
+            
+            if !self.positionIsNotFree(position: whiteBloc.position) {
+                self.addChild(whiteBloc)
             }
         }
     }
@@ -85,8 +97,10 @@ extension Grid {
             Int(node.position.x) == Int($0.position.x)
         }
         let finalPosition: CGFloat
-        if child.count > 2 {
-            finalPosition = CGFloat(child.count - 2) * self.gridViewModel.blocSize
+        if child.count > gridViewModel.gridPositiveRow() {
+            finalPosition = CGFloat(
+                child.count - gridViewModel.gridPositiveRow()
+            ) * self.gridViewModel.blocSize
         } else {
             finalPosition = -((self.gridViewModel.blocSize)/CGFloat(child.count))
         }

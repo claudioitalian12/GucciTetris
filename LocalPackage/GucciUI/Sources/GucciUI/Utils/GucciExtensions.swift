@@ -32,15 +32,13 @@ extension SKNode {
         let labelValue = SKLabelNode(text: value.blocValue)
         labelValue.fontColor = GucciResources.Colors.Game().fontBlocColor ?? .black
         addChild(labelValue)
-        labelValue.position = CGPoint(x: 0, y: -10)
+        labelValue.position = CGPoint(x: 0.0, y: -10.0)
     }
     /// scoreResultLabel.
     func scoreResultLabel(value: String) {
-        children.first { $0.name == "scoreResult" }?.removeFromParent()
         let labelValue = SKLabelNode(text: value)
         labelValue.fontColor = GucciResources.Colors.Game().fontBlocColor ?? .black
         addChild(labelValue)
-        labelValue.position = CGPoint(x: 0, y: -150)
-        labelValue.name = "scoreResult"
+        labelValue.position = CGPoint(x: 0.0, y: -150.0)
     }
 }

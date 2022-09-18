@@ -42,12 +42,12 @@ class GridViewModel: GucciGrid {
         
         for i in 0...cols {
             let x = CGFloat(i) * blocSize + offset
-            bezierPath.move(to: CGPoint(x: x, y: 0))
+            bezierPath.move(to: CGPoint(x: x, y: 0.0))
             bezierPath.addLine(to: CGPoint(x: x, y: size.height))
         }
         for i in 0...rows {
             let y = CGFloat(i) * blocSize + offset
-            bezierPath.move(to: CGPoint(x: 0, y: y))
+            bezierPath.move(to: CGPoint(x: 0.0, y: y))
             bezierPath.addLine(to: CGPoint(x: size.width, y: y))
         }
         SKColor.black.setStroke()
@@ -64,5 +64,13 @@ class GridViewModel: GucciGrid {
         let x = CGFloat(col) * self.blocSize - (self.blocSize * CGFloat(self.cols)) / 2.0 + offset
         let y = CGFloat(self.rows - row - 1) * self.blocSize - (self.blocSize * CGFloat(self.rows)) / 2.0 + offset
         return CGPoint(x: x, y: y)
+    }
+    /// gridMinY().
+    func gridMinY() -> CGFloat {
+        -((CGFloat((rows/2)) * blocSize) - 1.0)
+    }
+    /// gridPositiveRow().
+    func gridPositiveRow() -> Int {
+        rows/2
     }
 }

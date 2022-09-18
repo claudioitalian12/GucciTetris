@@ -24,13 +24,15 @@ extension Grid {
                 node.blocValueLabel(
                     value: .blueBloc(
                         position: node.position.y,
-                        blocSize: gridViewModel.blocSize
+                        blocSize: gridViewModel.blocSize,
+                        minY: gridViewModel.gridMinY()
                     )
                 )
                 scoreResult += Int(
                     BlocType.blueBloc(
                         position: node.position.y,
-                        blocSize: gridViewModel.blocSize
+                        blocSize: gridViewModel.blocSize,
+                        minY: gridViewModel.gridMinY()
                     ).blocValue
                 ) ?? 0
             default:

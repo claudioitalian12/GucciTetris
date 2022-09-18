@@ -13,15 +13,15 @@ public enum BlocType {
     /// whiteBloc.
     case whiteBloc
     /// blueBloc.
-    case blueBloc(position: CGFloat, blocSize: CGFloat)
+    case blueBloc(position: CGFloat, blocSize: CGFloat, minY: CGFloat)
     /// blocValue.
     var blocValue: String {
         switch self {
         case .whiteBloc:
             return "10"
-        case .blueBloc(var position, let blocSize):
+        case .blueBloc(var position, let blocSize, let minY):
             var value = 5
-            while position > -79.0 {
+            while position > minY {
                 position = position - blocSize
                 value += 5
             }

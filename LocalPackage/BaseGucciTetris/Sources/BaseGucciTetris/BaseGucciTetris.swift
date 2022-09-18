@@ -64,6 +64,10 @@ public protocol GucciGrid: GucciViewModel {
     func gridTexture() -> SKTexture?
     /// gridPosition(row: Int, col: Int).
     func gridPosition(row: Int, col: Int) -> CGPoint
+    /// gridMinY().
+    func gridMinY() -> CGFloat
+    /// gridPositiveRow().
+    func gridPositiveRow() -> Int
 }
 // MARK: - Destination
 /// The destination case.

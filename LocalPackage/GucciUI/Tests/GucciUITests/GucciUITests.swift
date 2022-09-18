@@ -34,7 +34,7 @@ final class GucciUITests: XCTestCase {
     }
     /// testLoadBlocTypeBlueValue.
     func testLoadBlocTypeBlueValue() throws {
-        let blocType = BlocType.blueBloc(position: -80.0, blocSize: 0.0)
+        let blocType = BlocType.blueBloc(position: -80.0, blocSize: 0.0, minY: -79.0)
         XCTAssertEqual("5", blocType.blocValue)
     }
     /// testBlocName.
@@ -68,8 +68,8 @@ final class GucciUITests: XCTestCase {
         XCTAssertEqual(bloc.name, "bloc")
         XCTAssertEqual(bloc.size, .zero)
     }
-    /// testGucciWhiteBlockFactory.
-    func testGucciWhiteBlockFactory() {
+    /// testGucciWhiteBlocFactory.
+    func testGucciWhiteBlocFactory() {
         let bloc = GucciBlocFactory().createWhiteBloc(size: .zero, name: "white")
         XCTAssertEqual(bloc.name, "white")
         XCTAssertEqual(bloc.size, .zero)
