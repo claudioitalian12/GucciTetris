@@ -35,19 +35,22 @@ extension CGPoint {
     }
 }
 // MARK: - extension SKNode
-/// The Block label.
+/// The Bloc label.
 extension SKNode {
-    func blockValueLabel(value: BlockType) {
-        let labelValue = SKLabelNode(text: value.blockValue)
-        labelValue.fontColor = GucciResources.Colors.Game().fontBlockColor ?? .black
+    /// blocValueLabel.
+    func blocValueLabel(value: BlocType) {
+        let labelValue = SKLabelNode(text: value.blocValue)
+        labelValue.fontColor = GucciResources.Colors.Game().fontBlocColor ?? .black
         addChild(labelValue)
         labelValue.position = CGPoint(x: 0, y: -10)
-        labelValue.name = "blockValue"
     }
+    /// scoreResultLabel.
     func scoreResultLabel(value: String) {
+        children.first { $0.name == "scoreResult" }?.removeFromParent()
         let labelValue = SKLabelNode(text: value)
-        labelValue.fontColor = GucciResources.Colors.Game().fontBlockColor ?? .black
+        labelValue.fontColor = GucciResources.Colors.Game().fontBlocColor ?? .black
         addChild(labelValue)
         labelValue.position = CGPoint(x: 0, y: -150)
+        labelValue.name = "scoreResult"
     }
 }

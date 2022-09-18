@@ -7,9 +7,9 @@
 
 import SpriteKit
 
-// MARK: - Block
-/// The Block.
-public class Block: SKSpriteNode {
+// MARK: - Bloc
+/// The Bloc.
+public class Bloc: SKSpriteNode {
     convenience init(texture: SKTexture?, color: UIColor, size: CGSize, name: String?) {
         self.init(texture: texture, color: color, size: size)
         self.name = name

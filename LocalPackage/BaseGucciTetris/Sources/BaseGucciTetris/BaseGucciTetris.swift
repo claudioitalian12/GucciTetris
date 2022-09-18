@@ -58,8 +58,8 @@ public protocol GucciGrid: GucciViewModel {
     var rows: Int { get }
     /// cols.
     var cols: Int { get }
-    /// blockSize.
-    var blockSize: CGFloat { get }
+    /// blocSize.
+    var blocSize: CGFloat { get }
     /// gridTexture.
     func gridTexture() -> SKTexture?
     /// gridPosition(row: Int, col: Int).

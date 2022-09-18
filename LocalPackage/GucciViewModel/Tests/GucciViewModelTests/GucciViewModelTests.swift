@@ -15,10 +15,10 @@ final class GucciViewModelTests: XCTestCase {
     }
     /// testInitGridViewModel.
     func testInitGridViewModel() throws {
-        let viewModel = GridViewModel(rows: 5, cols: 5, blockSize: 40.0)
+        let viewModel = GridViewModel(rows: 5, cols: 5, blocSize: 40.0)
         XCTAssertEqual(viewModel.rows, 5)
         XCTAssertEqual(viewModel.cols, 5)
-        XCTAssertEqual(viewModel.blockSize, 40.0)
+        XCTAssertEqual(viewModel.blocSize, 40.0)
     }
     /// testHomeGucciViewModel.
     func testHomeGucciViewModel() throws {
@@ -32,12 +32,12 @@ final class GucciViewModelTests: XCTestCase {
     }
     /// testGridTexture.
     func testGridTexture() throws {
-        let viewModel = GridViewModel(rows: 5, cols: 5, blockSize: 40.0)
+        let viewModel = GridViewModel(rows: 5, cols: 5, blocSize: 40.0)
         XCTAssertNotNil(viewModel.gridTexture())
     }
     /// testGridPosition.
     func testGridPosition() throws {
-        let viewModel = GridViewModel(rows: 5, cols: 5, blockSize: 40.0)
+        let viewModel = GridViewModel(rows: 5, cols: 5, blocSize: 40.0)
         XCTAssertEqual(CGPoint(x: 0.5, y: 0.5), viewModel.gridPosition(row: 2, col: 2))
     }
 }

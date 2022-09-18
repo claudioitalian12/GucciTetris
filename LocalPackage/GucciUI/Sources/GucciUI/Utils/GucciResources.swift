@@ -25,9 +25,9 @@ extension GucciResources.Colors {
     public struct Game {
         public init() {}
         public let primaryColor = UIColor(named: "white", in: Bundle.module, compatibleWith: nil)
-        public let normalBlockColor = UIColor(named: "blue", in: Bundle.module, compatibleWith: nil)
-        public let clearBlockColor = UIColor(named: "clear", in: Bundle.module, compatibleWith: nil)
-        public let fontBlockColor = UIColor(named: "black", in: Bundle.module, compatibleWith: nil)
+        public let normalBlocColor = UIColor(named: "blue", in: Bundle.module, compatibleWith: nil)
+        public let clearBlocColor = UIColor(named: "clear", in: Bundle.module, compatibleWith: nil)
+        public let fontBlocColor = UIColor(named: "black", in: Bundle.module, compatibleWith: nil)
     }
 }
 // MARK: - GucciResources UI

@@ -17,7 +17,7 @@ public extension GucciViewModel {
         case .game:
             return GameViewModel()
         case .gameScene:
-            return GridViewModel(rows: 5, cols: 5, blockSize: 40.0)
+            return GridViewModel(rows: 5, cols: 5, blocSize: 40.0)
         }
     }
 }

@@ -15,32 +15,32 @@ final class GucciUITests: XCTestCase {
     func testLoadGamePrimaryColor() throws {
         XCTAssertNotNil(GucciResources.Colors.Game().primaryColor)
     }
-    /// testLoadGameNormalBlockColor.
-    func testLoadGameNormalBlockColor() throws {
-        XCTAssertNotNil(GucciResources.Colors.Game().normalBlockColor)
+    /// testLoadGameNormalBlocColor.
+    func testLoadGameNormalBlocColor() throws {
+        XCTAssertNotNil(GucciResources.Colors.Game().normalBlocColor)
     }
-    /// testLoadGameClearBlockColor.
-    func testLoadGameClearBlockColor() throws {
-        XCTAssertNotNil(GucciResources.Colors.Game().clearBlockColor)
+    /// testLoadGameClearBlocColor.
+    func testLoadGameClearBlocColor() throws {
+        XCTAssertNotNil(GucciResources.Colors.Game().clearBlocColor)
     }
-    /// testLoadGameFontBlockColor.
-    func testLoadGameFontBlockColor() throws {
-        XCTAssertNotNil(GucciResources.Colors.Game().fontBlockColor)
+    /// testLoadGameFontBlocColor.
+    func testLoadGameFontBlocColor() throws {
+        XCTAssertNotNil(GucciResources.Colors.Game().fontBlocColor)
     }
-    /// testLoadBlockTypeWhiteValue.
-    func testLoadBlockTypeWhiteValue() throws {
-        let blockType = BlockType.whiteBlock
-        XCTAssertEqual("10", blockType.blockValue)
+    /// testLoadBlocTypeWhiteValue.
+    func testLoadBlocTypeWhiteValue() throws {
+        let blocType = BlocType.whiteBloc
+        XCTAssertEqual("10", blocType.blocValue)
     }
-    /// testLoadBlockTypeBlueValue.
-    func testLoadBlockTypeBlueValue() throws {
-        let blockType = BlockType.blueBlock(position: -80.0, blockSize: 0.0)
-        XCTAssertEqual("5", blockType.blockValue)
+    /// testLoadBlocTypeBlueValue.
+    func testLoadBlocTypeBlueValue() throws {
+        let blocType = BlocType.blueBloc(position: -80.0, blocSize: 0.0)
+        XCTAssertEqual("5", blocType.blocValue)
     }
-    /// testBlockName.
-    func testBlockName() throws {
-        let block = Block(texture: nil, color: .clear, size: .zero, name: "block")
-        XCTAssertEqual(block.name, "block")
+    /// testBlocName.
+    func testBlocName() throws {
+        let bloc = Bloc(texture: nil, color: .clear, size: .zero, name: "bloc")
+        XCTAssertEqual(bloc.name, "bloc")
     }
     /// testGucciHome.
     func testGucciHome() throws {
@@ -62,16 +62,16 @@ final class GucciUITests: XCTestCase {
         let scene = GucciScene(size: .zero)
         XCTAssertNil(scene.grid)
     }
-    /// testGucciBlueBlockFactory.
-    func testGucciBlueBlockFactory() {
-        let block = GucciBlockFactory().createBlueBlock(size: .zero, name: "block")
-        XCTAssertEqual(block.name, "block")
-        XCTAssertEqual(block.size, .zero)
+    /// testGucciBlueBlocFactory.
+    func testGucciBlueBlocFactory() {
+        let bloc = GucciBlocFactory().createBlueBloc(size: .zero, name: "bloc")
+        XCTAssertEqual(bloc.name, "bloc")
+        XCTAssertEqual(bloc.size, .zero)
     }
     /// testGucciWhiteBlockFactory.
     func testGucciWhiteBlockFactory() {
-        let block = GucciBlockFactory().createWhiteBlock(size: .zero, name: "white")
-        XCTAssertEqual(block.name, "white")
-        XCTAssertEqual(block.size, .zero)
+        let bloc = GucciBlocFactory().createWhiteBloc(size: .zero, name: "white")
+        XCTAssertEqual(bloc.name, "white")
+        XCTAssertEqual(bloc.size, .zero)
     }
 }

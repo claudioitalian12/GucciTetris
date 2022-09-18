@@ -18,13 +18,13 @@ class GridViewModel: GucciGrid {
     public var rows: Int
     /// cols.
     public var cols: Int
-    /// blockSize.
-    public var blockSize: CGFloat
-    /// init(rows: Int, cols: Int, blockSize: CGFloat).
-    init(rows: Int, cols: Int, blockSize: CGFloat) {
+    /// blocSize.
+    public var blocSize: CGFloat
+    /// init(rows: Int, cols: Int, blocSize: CGFloat).
+    init(rows: Int, cols: Int, blocSize: CGFloat) {
         self.rows = rows
         self.cols = cols
-        self.blockSize = blockSize
+        self.blocSize = blocSize
     }
     /// gridTexture for create the matrix.
     public func gridTexture() -> SKTexture? {
@@ -33,20 +33,20 @@ class GridViewModel: GucciGrid {
         let size = CGSize(
             width: CGFloat(
                 cols
-            ) * blockSize + 1.0,
+            ) * blocSize + 1.0,
             height: CGFloat(
                 rows
-            ) * blockSize + 1.0
+            ) * blocSize + 1.0
         )
         UIGraphicsBeginImageContext(size)
         
         for i in 0...cols {
-            let x = CGFloat(i) * blockSize + offset
+            let x = CGFloat(i) * blocSize + offset
             bezierPath.move(to: CGPoint(x: x, y: 0))
             bezierPath.addLine(to: CGPoint(x: x, y: size.height))
         }
         for i in 0...rows {
-            let y = CGFloat(i) * blockSize + offset
+            let y = CGFloat(i) * blocSize + offset
             bezierPath.move(to: CGPoint(x: 0, y: y))
             bezierPath.addLine(to: CGPoint(x: size.width, y: y))
         }
@@ -60,9 +60,9 @@ class GridViewModel: GucciGrid {
     }
     /// gridPosition(row:Int, col:Int).
     public func gridPosition(row: Int, col: Int) -> CGPoint {
-        let offset = self.blockSize / 2.0 + 0.5
-        let x = CGFloat(col) * self.blockSize - (self.blockSize * CGFloat(self.cols)) / 2.0 + offset
-        let y = CGFloat(self.rows - row - 1) * self.blockSize - (self.blockSize * CGFloat(self.rows)) / 2.0 + offset
+        let offset = self.blocSize / 2.0 + 0.5
+        let x = CGFloat(col) * self.blocSize - (self.blocSize * CGFloat(self.cols)) / 2.0 + offset
+        let y = CGFloat(self.rows - row - 1) * self.blocSize - (self.blocSize * CGFloat(self.rows)) / 2.0 + offset
         return CGPoint(x: x, y: y)
     }
 }
