@@ -23,16 +23,6 @@ extension CGPoint {
             )
         )
     }
-    /// distancey.
-    func distancey(point: CGPoint) -> CGFloat? {
-        if point.x == self.x {
-            return CGFloat(
-                Float(point.y - self.y)
-            )
-        } else {
-            return nil
-        }
-    }
 }
 // MARK: - extension SKNode
 /// The Bloc label.

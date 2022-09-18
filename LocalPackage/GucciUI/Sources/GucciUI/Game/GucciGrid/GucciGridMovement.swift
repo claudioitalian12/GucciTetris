@@ -81,21 +81,16 @@ extension Grid {
     }
     /// checkBlueBloc.
     func checkBlueBloc(node: SKNode) {
-        let closestNode = self.closestChild(point: node.position, maxDistance: 200.0)
         let child = self.children.filter {
             Int(node.position.x) == Int($0.position.x)
         }
-        var finalPosition: CGFloat
-        if child.count > 4 {
-            finalPosition = (120.0 + CGFloat(child.count) * 40.0) - (CGFloat(child.count) * 40.0)
-        } else if child.count == 4 {
-            finalPosition = (80.0 + CGFloat(child.count) * 40.0) - (CGFloat(child.count) * 40.0)
-        } else if child.count == 3 {
-            finalPosition = (40.0 + CGFloat(child.count) * 40.0) - (CGFloat(child.count) * 40.0)
+        let finalPosition: CGFloat
+        if child.count > 2 {
+            finalPosition = CGFloat(child.count - 2) * self.gridViewModel.blocSize
         } else {
-            finalPosition = -(CGFloat(child.count) * (80.0 + (CGFloat(child.count) * -40.0)))
+            finalPosition = -((self.gridViewModel.blocSize)/CGFloat(child.count))
         }
-        if closestNode == nil || Int(node.position.y) < Int(finalPosition) {
+        if Int(node.position.y) < Int(finalPosition) {
             self.numberOfBlocs()
             node.removeAllActions()
         }
@@ -123,16 +118,6 @@ extension Grid {
         let col = Int(floor(y / gridViewModel.blocSize))
         
         return self.gridViewModel.gridPosition(row: col, col: row)
-    }
-    /// closestChild.
-    func closestChild(point: CGPoint, maxDistance: CGFloat) -> SKNode? {
-        self.children
-            .filter {
-                $0.position.distancey(point: point) ?? .infinity <= maxDistance
-            }
-            .min {
-                $0.position.distancey(point: point) ?? .infinity < $1.position.distancey(point: point) ?? .infinity
-            }
     }
     /// closestChilds.
     func closestChilds(point: CGPoint, maxDistance: CGFloat) -> [SKNode]? {
